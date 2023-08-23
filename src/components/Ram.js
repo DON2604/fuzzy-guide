@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-export default function Ram() {
+export const Ram = () => {
   const fetchData = async () => {
     const url =
       'https://youtube-v31.p.rapidapi.com/playlistItems?playlistId=PLjVLYmrlmjGdDps6HAwOOVoAtBPAgIOXL&part=snippet&maxResults=50';
