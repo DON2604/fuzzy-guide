@@ -13,6 +13,9 @@ app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"))
 
+
+app.use("/api/planner", require("./routes/planner"))
+
 app.listen(port, () => {
   console.log(`Backend listening on port ${port}`);
 });
