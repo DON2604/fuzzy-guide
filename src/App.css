@@ -716,6 +716,6 @@ input:focus {
 #submit {
   position: absolute;
   bottom: 15px;
-  right: 0;
+  right: 8px;
   cursor: pointer;
 }
