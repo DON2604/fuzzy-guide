@@ -34,6 +34,7 @@ body {
   background-color: #121212 !important;
   color: #fff !important;
   font-family: 'Centra', sans-serif !important;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -545,14 +546,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 20px;
 }
 .newsletter-bx {
   background: #FFFFFF;
   border-radius: 55px;
   color: #121212;
   padding: 85px 125px;
-  margin-bottom: 80px;
-  margin-top: -122px;
+  margin-bottom: 10px;
+  margin-top: 830px;
 }
 .newsletter-bx h3 {
   font-weight: 700;
@@ -615,4 +617,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #B8B8B8;
   letter-spacing: 0.5px;
   margin-top: 20px;
+}
+.course-planner-container{
+  padding-top: 100px;
+  
+}
+.course-planner-container h2{
+
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
 }
