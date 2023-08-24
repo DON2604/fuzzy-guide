@@ -15,7 +15,7 @@ router.post("/chat", fetchuser, async (req, res) => {
 	method: 'POST',
 	headers: {
 		'content-type': 'application/json',
-		'X-RapidAPI-Key': '4f1d01abf6mshb3ecb561f6b70dcp128eafjsnad5a6d3d3228',
+		'X-RapidAPI-Key': '8c8d648c9emsh87341681f1dcf04p1633a4jsne18229bc72d1',
 		'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
 	},
       body:
