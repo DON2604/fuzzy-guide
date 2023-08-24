@@ -4,8 +4,6 @@ import { NavBar } from "./components/NavBar";
 
 import { BrowserRouter , Route, Routes } from 'react-router-dom';
 
-
-import { Footer } from "./components/Footer";
 import Home from './components/Home';
 import Courseplanner from './components/Courseplanner';
 import Aichat from './components/Aichat';
@@ -19,7 +17,6 @@ function App() {
           <Route exact path="/course-planner" element={<Courseplanner />} />
           <Route exact path = "/Ai-chat" element={<Aichat />} />
         </Routes>
-        <Footer />
     </BrowserRouter>
   );
 }
