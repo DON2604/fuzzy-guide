@@ -1,8 +1,8 @@
 import React from 'react'
-import { Banner } from "./Banner";
-import { Skills } from "./Skills";
-import { Contact } from "./Contact";
-import { Footer } from './Footer';
+import { Banner } from "./Features/Banner";
+import { Skills } from "./Features/Skills";
+import { Contact } from "./Features/Contact";
+import { Footer } from './Features/Footer';
 
 const Home = () => {
   return (

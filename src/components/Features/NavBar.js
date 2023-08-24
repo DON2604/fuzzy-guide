@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import navIcon1 from '../assets/img/nav-icon1.svg';
-import logos from "../assets/img/PathForge.png"
+import navIcon1 from '../../assets/img/nav-icon1.svg';
+import logos from "../../assets/img/PathForge.png"
 import { HashLink } from 'react-router-hash-link';
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
 
 export const NavBar = () => {
 
