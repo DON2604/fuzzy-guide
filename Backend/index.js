@@ -12,8 +12,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"))
-
-
 app.use("/api/planner", require("./routes/planner"))
 app.use("/api/chatbot", require("./routes/chatbot"))
 

@@ -1,31 +1,36 @@
-const express = require('express');
-const cors = require('cors');
-const url = 'https://chatgpt-api8.p.rapidapi.com/';
-const API_KEY = '8c8d648c9emsh87341681f1dcf04p1633a4jsne18229bc72d1'
-const fetch = require('node-fetch')
-router.post('/completions', async (req,res) => {
-    const options = {
-        method: "POST",
-        headers: {
-            'content-type': 'application/json',
-            'X-RapidAPI-Key': API_KEY,
-            'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
-        },
-        body: [
-            {
-              content: 'who won the super bowl 2019?',
-              role: 'user'
-            }
-        ]
-    };
+const express = require("express");
+const router = express.Router();
+const fetchuser = require("../middleware/fetchuser");
+const { validationResult } = require("express-validator");
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.json();
-    res.send(result);
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-})
- 
+router.post("/chat", fetchuser, async (req, res) => {
+  try {
+    //if errors, return bad request
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).send({ errors: errors.array() });
+    }
+    const url = "https://chatgpt-api8.p.rapidapi.com/";
+    const options = {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": "4f1d01abf6mshb3ecb561f6b70dcp128eafjsnad5a6d3d3228",
+        "X-RapidAPI-Host": "chatgpt-api8.p.rapidapi.com",
+      },
+      body: [
+        {
+          content: req.body.content,
+          role: req.body.role,
+        },
+      ],
+    };
+    const response = await fetch(url, options);
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+module.exports = router;
