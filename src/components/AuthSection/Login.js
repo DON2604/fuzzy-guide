@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { Link, useNavigate } from "react-router-dom";
+import PopupNotification from "./popup";
 
 export default function Login(props) {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [showPopup, setShowPopup] = useState(false);
   let navigate = useNavigate();
 
   const host = "http://localhost:5000";
@@ -26,6 +28,7 @@ export default function Login(props) {
       //refirect
       localStorage.setItem("token", json.authtoken);
       navigate("/");
+      setShowPopup(true);
     } 
   };
 
@@ -66,6 +69,7 @@ export default function Login(props) {
       </Button>
       <Link className="btn btn-primary mx-3" to="/signup">Signup</Link>
     </Form>
+    {showPopup && <PopupNotification message="You are successfully logged in....." />}
     </Container>
   );
 }
