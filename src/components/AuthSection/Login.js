@@ -28,6 +28,7 @@ export default function Login(props) {
       //refirect
       localStorage.setItem("token", json.authtoken);
       navigate("/");
+      console.log("Setting pop up to true");
       setShowPopup(true);
     } 
   };
@@ -67,9 +68,12 @@ export default function Login(props) {
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      
       <Link className="btn btn-primary mx-3" to="/signup">Signup</Link>
+      
     </Form>
     {showPopup && <PopupNotification message="You are successfully logged in....." />}
+    
     </Container>
   );
 }
