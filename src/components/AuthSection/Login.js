@@ -25,7 +25,7 @@ export default function Login(props) {
     if (json.success) {
       //refirect
       localStorage.setItem("token", json.authtoken);
-      navigate("/home");
+      navigate("/");
     } 
   };
 
