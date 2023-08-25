@@ -3,11 +3,33 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import navIcon1 from '../../assets/img/nav-icon1.svg';
 import logos from "../../assets/img/PathForge.png"
 import { HashLink } from 'react-router-hash-link';
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsAuth(true);
+    } else{
+      setIsAuth(false);
+    }
+    // eslint-disable-next-line
+  }, [])
+
+  const handleLogin = () => {
+    navigate("/login")
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsAuth(false);
+    navigate("/");
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -51,6 +73,9 @@ export const NavBar = () => {
               <HashLink to='#connect'>
                 <button className="vvd"><span>Let’s Connect</span></button>
               </HashLink>
+              {isAuth?<div>
+                <button onClick={handleLogout}>LogOut</button>
+              </div>:<button onClick={handleLogin}>Login</button>}
             </span>
           </Navbar.Collapse>
         </Container>

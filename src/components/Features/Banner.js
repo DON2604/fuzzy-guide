@@ -20,13 +20,15 @@ export const Banner = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsAuth(true);
+    } else{
+      setIsAuth(false);
     }
     // eslint-disable-next-line
   }, [])
 
   let navigate = useNavigate();
   const handleClick = () => {
-    navigate("/login");
+    navigate("/signup");
   };
 
   useEffect(() => {
