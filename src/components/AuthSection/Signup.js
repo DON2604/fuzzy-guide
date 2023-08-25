@@ -27,7 +27,7 @@ export default function Signup(props) {
     if (json.success) {
         //redirect
         localStorage.setItem("token", json.authtoken);
-        navigate("/home");
+        navigate("/");
       }
   };
 
@@ -37,7 +37,7 @@ export default function Signup(props) {
     
   return (
     <Container className="my-3">
-    <h2>Create an account to use Hack</h2>
+    <h2>Create an account to use PathForge</h2>
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label htmlFor="name">Name</Form.Label>

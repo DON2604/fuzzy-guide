@@ -35,7 +35,7 @@ export default function Login(props) {
 
   return (
     <Container className="my-3">
-    <h2>Login to continue to Hack</h2>
+    <h2>Login to continue to PathForge</h2>
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label htmlFor="email">Email address</Form.Label>

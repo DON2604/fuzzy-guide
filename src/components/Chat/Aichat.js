@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { NavBar } from '../Features/NavBar'
+import { useNavigate } from 'react-router-dom';
 
 const Aichat = () => {
-  return (
+    let navigate = useNavigate();
+    useEffect(() => {
+        if (!localStorage.getItem("token")) {
+           navigate("/login");
+        }
+        // eslint-disable-next-line
+      }, [])
+  return (<>
+    <NavBar />
     <div className="aichat" id ="Ai-chat">
         <section className="side-bar">
             <button type="button" className="button-primary"> + New Chat </button>
@@ -30,6 +40,7 @@ const Aichat = () => {
         </section>
 
     </div>
+    </>
   )
 }
 
