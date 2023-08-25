@@ -9,8 +9,10 @@ const Aichat = () => {
   const [response, setResponse] = useState(""); // State to store chatbot response
   const chatsInitial = [];
   const [chats, setChats] = useState(chatsInitial);
-  const [title, setTitle] = useState(""); 
-  const titleText = "AI Helper";
+
+  // const reloadChat = async (chat) => {
+  //   setInput(chat)
+  // }
 
   const getChats = async () => {
     try {
@@ -73,42 +75,11 @@ const Aichat = () => {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    let currentIndex = 0;
-
-    const typingInterval = setInterval(() => {
-      if (currentIndex < titleText.length) {
-        setTitle((prevTitle) => prevTitle + titleText[currentIndex]);
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-        setTimeout(() => {
-          const erasingInterval = setInterval(() => {
-            if (currentIndex > 0) {
-              setTitle((prevTitle) => prevTitle.slice(0, -1));
-              currentIndex--;
-            } else {
-              clearInterval(erasingInterval);
-            }
-          }, 100);
-        }, 1000); // Delay before erasing
-      }
-    }, 150);
-
-    return () => {
-      clearInterval(typingInterval);
-    };
-  }, []);
-
-
   return (
     <>
       <NavBar />
       <div className="aichat" id="Ai-chat">
         <section className="side-bar">
-          <button type="button" className="button-primary">
-            New 
-          </button>
           <ul className="search-history">
             <li>Search History</li>
             {chats.length===0?<li>Nothing to show</li>:""}
@@ -116,9 +87,6 @@ const Aichat = () => {
               <li>{chat.title}</li>
             ))}
           </ul>
-          <nav>
-            <p>{title}</p>
-          </nav>
         </section>
         <section className="main-content">
           <h1> AI Helper </h1>

@@ -656,7 +656,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .aichat {
   padding-top: 200px;
   position: relative; /* Add this */
-  background: linear-gradient(90deg, #8697ed, #032465);
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
   background-size: 200% 200%;
   animation: gradientAnimation 5s linear infinite alternate;
   display: flex;
@@ -769,8 +769,8 @@ input:focus {
 }
 
 .response-textarea {
-  width: 115%;
-  height: 150px;
+  width: 905px;
+  height: 600px;
   padding: 20px;
   border: none; 
   border-radius: 5px;
