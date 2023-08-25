@@ -2,13 +2,32 @@ import React, { useEffect, useState } from "react";
 import { NavBar } from "../Features/NavBar";
 import { useNavigate } from "react-router-dom";
 
+const host = "http://localhost:5000";
+
 const Aichat = () => {
   const [input, setInput] = useState("");
   const [response, setResponse] = useState(""); // State to store chatbot response
+  const chatsInitial = [];
+  const [chats, setChats] = useState(chatsInitial);
+
+  const getChats = async () => {
+    try {
+      const prevRes = await fetch(`${host}/api/oldchat/fetchallchats`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await prevRes.json();
+      console.log(json);
+      setChats(json);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   const addChat = async () => {
-    const host = "http://localhost:5000";
-
     try {
       const response = await fetch(`${host}/api/chatbot/chat`, {
         method: "POST",
@@ -18,9 +37,20 @@ const Aichat = () => {
         },
         body: JSON.stringify({ content: input }),
       });
+      const ResChat = await fetch(`${host}/api/oldchat//addchat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ title: input }),
+      });
 
-      const chat = await response.json();
-      console.log(chat)
+      const newChat = await ResChat.json()
+      const chat = await response.json()
+      console.log(newChat);
+      getChats();
+      console.log(chat);
       setResponse(chat); // Update the response state
     } catch (error) {
       console.error("Error:", error);
@@ -28,6 +58,12 @@ const Aichat = () => {
   };
 
   let navigate = useNavigate();
+
+  useEffect(() => {
+    getChats();
+    // eslint-disable-next-line
+  }, []);
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/login");
@@ -40,12 +76,15 @@ const Aichat = () => {
       <NavBar />
       <div className="aichat" id="Ai-chat">
         <section className="side-bar">
-          <button type="button" className="button-primary">
-            {" "}
-            + New Chat{" "}
-          </button>
+          {/* <button type="button" className="button-primary">
+            + New Chat
+          </button> */}
           <ul className="search-history">
-            <li> Java </li>
+            <li>Search History</li>
+            {chats.length===0?<li>Nothing to show</li>:""}
+            {chats.map((chat) => (
+              <li>{chat.title}</li>
+            ))}
           </ul>
           <nav>
             <p> Ai Helper </p>
@@ -68,7 +107,7 @@ const Aichat = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message"
+                placeholder="What do you want to learn?"
               />
               <div id="submit" onClick={addChat}>
                 ▷
