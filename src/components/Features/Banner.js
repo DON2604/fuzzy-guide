@@ -13,6 +13,15 @@ export const Banner = () => {
   const [index, setIndex] = useState(1);
   const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
   const period = 2000;
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setIsAuth(true);
+    }
+    // eslint-disable-next-line
+  }, [])
+  
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -57,9 +66,7 @@ export const Banner = () => {
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <h1>{`PathForge`} </h1>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <button className="rounded-button" >
-      Get started
-    </button>
+                {isAuth?"" : <button className="rounded-button" >Get started</button>}
 
               </div>}
             </TrackVisibility>
