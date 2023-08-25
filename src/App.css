@@ -655,26 +655,37 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .aichat {
   padding-top: 200px;
-  background: linear-gradient(90deg, #8c91aa, #202123);
+  background: linear-gradient(90deg, #8697ed, #032465);
+  background-size: 200% 200%;
+  animation: gradientAnimation 10s linear infinite alternate;
   display: flex;
 }
 .side-bar {
-  background-color: #202123;
+  flex: 7;
+  padding: 40px;
+  background-color: #484848;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   height: 100vh;
-  width: 244px;
+  width: 304px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .button-primary {
   background-color: #007bff;
-  color: white;
-  border: 2px solid #007bff; /* Add a border to the button */
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+  color: #fff;
+  padding: 1px 20px;
+  border: none;
+  border-radius: 2px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 .main-content {
   height: 100vh;
@@ -687,9 +698,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .search-history {
+  
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
   height: 100%;
+  
 }
 .search-history li{
   list-style: none;
@@ -739,4 +752,12 @@ input:focus {
   bottom: 15px;
   right: 8px;
   cursor: pointer;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
