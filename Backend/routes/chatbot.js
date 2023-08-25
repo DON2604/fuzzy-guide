@@ -3,7 +3,7 @@ const router = express.Router();
 const fetchuser = require("../middleware/fetchuser");
 const { validationResult } = require("express-validator");
 
-router.get("/chat", fetchuser, async (req, res) => {
+router.post("/chat", fetchuser, async (req, res) => {
   try {
     //   if errors, return bad request
     const errors = validationResult(req);
