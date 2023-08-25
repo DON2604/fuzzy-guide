@@ -124,6 +124,7 @@ const Aichat = () => {
           <h1> AI Helper </h1>
           <ul className="feed">
             <textarea
+              className="response-textarea"
               value={response}
               readOnly
               rows={5}
@@ -134,6 +135,7 @@ const Aichat = () => {
           <div className="bottom-container">
             <div className="input-container">
               <input
+                className="input-field"
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
