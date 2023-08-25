@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/auth"))
 app.use("/api/planner", require("./routes/planner"))
 app.use("/api/oldchat", require("./routes/oldchat"))
-// app.use("/api/chatbot", require("./routes/chatbot"))
+app.use("/api/chatbot", require("./routes/chatbot"))
 
 app.listen(port, () => {
   console.log(`Backend listening on port ${port}`);
